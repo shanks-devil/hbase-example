@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.shanks.hbase.example.repository.ExampleRepository">
+	<insert id="insertExample">
+		UPSERT INTO example (
+			uuid,
+			name,
+			create_time,
+			note,
+			number,
+			administrator
+			
+		) VALUES(
+			#{uuid},
+			#{name},
+			#{createTime},
+			#{note},
+			#{number},
+			#{administrator}
+		)
+	</insert>
+	
+	<select id="find" resultType="int">
+		SELECT 
+			uuid,
+			name,
+			createTime,
+			note,
+			number,
+			administrator
+		FROM 
+			example 
+		WHERE 
+			uuid = #{uuid} 
+	</select>
+
+</mapper>
