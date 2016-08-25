@@ -1,5 +1,7 @@
 package com.github.shanks.hbase.example.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,4 +22,7 @@ public class ExampleService {
 		return exampleRepository.find(uuid);
 	}
 	
+	public List<ExampleModel> select(ExampleModel model) {
+		return exampleRepository.select(model);
+	}
 }

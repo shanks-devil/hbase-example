@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.github.shanks.hbase.example.repository.ExampleRepository">
-	<insert id="insertExample">
+	<resultMap type="example" id="exampleMapper">
+		<result column="uuid" property="uuid" />
+		<result column="name" property="name" />
+		<result column="create_time" property="createTime" />
+		<result column="note" property="note" />
+		<result column="number" property="number" />
+		<result column="administrator" property="administrator" />
+	</resultMap>
+	
+	<insert id="insert">
 		UPSERT INTO example (
 			uuid,
 			name,
@@ -9,7 +18,6 @@
 			note,
 			number,
 			administrator
-			
 		) VALUES(
 			#{uuid},
 			#{name},
@@ -20,11 +28,11 @@
 		)
 	</insert>
 	
-	<select id="find" resultType="int">
+	<select id="find" resultMap="exampleMapper">
 		SELECT 
 			uuid,
 			name,
-			createTime,
+			create_time,
 			note,
 			number,
 			administrator
@@ -32,6 +40,26 @@
 			example 
 		WHERE 
 			uuid = #{uuid} 
+	</select>
+
+	<select id="select" resultMap="exampleMapper">
+		SELECT 
+			uuid,
+			name,
+			create_time,
+			note,
+			number,
+			administrator
+		FROM 
+			example
+		<where>
+			<if test="name != null" >
+				name = #{name} 
+			</if>
+			<if test="administrator != null">
+				and administrator = #{administrator} 
+			</if>
+		</where> 
 	</select>
 
 </mapper>
