@@ -13,6 +13,10 @@
 	<bean id="hbaseDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${hbase.jdbc.driverClassName}"/>
 		<property name="url" value="${hbase.jdbc.url}"/>
+		<!-- open transaction management -->
+		<property name="connectionProperties">
+			<value>phoenix.transactions.enabled=${hbase.transactions.enabled}</value>
+		</property>
 	</bean>
 
 	<bean id="hbaseSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

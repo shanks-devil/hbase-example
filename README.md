@@ -1,6 +1,8 @@
 Problem
 ====================
-### apache-phoenix-4.8.0-HBase-1.2-bin/bin/psql.py localhost:2184 example.sql 
+### Create Table
+	apache-phoenix-4.8.0-HBase-1.2-bin/bin/psql.py localhost:2184 example.sql 
+	apache-phoenix-4.8.0-HBase-1.2-bin/bin/psql.py localhost:2184 user_access.sql 
 
 ### If an Exception "org.apache.phoenix.exception.PhoenixIOException: SYSTEM.CATALOG" is encountered  when run test case in your PC
 	1 stop hbase Master and regionServers,and still keep ZK alive.

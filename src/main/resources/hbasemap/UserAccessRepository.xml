@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.shanks.hbase.example.repository.UserAccessRepository">
+
+	<insert id="insert">
+		UPSERT INTO USER_ACCESS (
+			userId,
+			url,
+			ip,
+			prot,
+			onLineTime,
+			offLineTime
+		) VALUES (
+			#{userId},
+			#{url},
+			#{ip},
+			#{prot},
+			#{onLineTime},
+			#{offLineTime}
+		)
+	</insert>
+	
+	<select id="find" resultType="userAccess">
+		SELECT
+			userId,
+			url,
+			ip,
+			prot,
+			onLineTime,
+			offLineTime
+		FROM USER_ACCESS
+		WHERE 
+			userId = #{userId}
+			AND url = #{url}
+	</select>
+	
+	<select id="selectByUser" resultType="userAccess">
+		SELECT
+			userId,
+			url,
+			ip,
+			prot,
+			onLineTime,
+			offLineTime
+		FROM USER_ACCESS
+		WHERE 
+			userId = #{userId}
+	</select>
+	
+	<select id="selectByUrl" resultType="userAccess">
+		SELECT
+			userId,
+			url,
+			ip,
+			prot,
+			onLineTime,
+			offLineTime
+		FROM USER_ACCESS
+		WHERE 
+			url = #{url}
+	</select>
+</mapper>
