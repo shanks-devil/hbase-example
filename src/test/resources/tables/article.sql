@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS  "ARTICLE" (
+	articleId VARCHAR(16) not null,
+	"INFO".owner VARCHAR(32),
+	"INFO".vote VARCHAR(16)
+	CONSTRAINT pk PRIMARY KEY (articleId)
+);

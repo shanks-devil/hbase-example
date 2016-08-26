@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.shanks.hbase.example.repository.ArticleRepository">
+	
+	<insert id="insert">
+		UPSERT INTO ARTICLE (
+			articleId,
+			INFO.owner,
+			INFO.vote
+		) VALUES (
+			#{articleId},
+			#{owner},
+			#{vote}
+		)
+	</insert>
+	
+	<select id="find" resultType="article">
+		SELECT 
+			articleId,
+			INFO.owner,
+			INFO.vote
+		FROM ARTICLE
+		WHERE articleId = #{articleId}
+	</select>
+	
+	<select id="select" resultType="article">
+		SELECT 
+			articleId,
+			INFO.owner,
+			INFO.vote
+		FROM ARTICLE
+		<where>
+			<if test="articleId != null">
+				articleId = #{articleId}
+			</if>
+			<if test="owner != null">
+				and owner = #{owner}
+			</if>
+			<if test="vote != null">
+				and vote = #{vote}
+			</if>
+		</where>
+	</select>
+	
+</mapper>

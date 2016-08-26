@@ -1,0 +1,7 @@
+1: /bin/hbase shell
+
+2: create 'ARTICLE',{NAME => 'INFO'}
+
+3: put 'ARTICLE','1','INFO:OWNER','hbase'
+
+4: put 'ARTICLE','1','INFO:VOTE','77'

@@ -8,5 +8,6 @@
 	<typeAliases>
 		<typeAlias type="com.github.shanks.hbase.example.model.ExampleModel" alias="example" />
 		<typeAlias type="com.github.shanks.hbase.example.model.UserAccessModel" alias="userAccess" />
+		<typeAlias type="com.github.shanks.hbase.example.model.ArticleModel" alias="article" />
 	</typeAliases>
 </configuration>

@@ -6,17 +6,12 @@ import java.util.UUID;
 import org.joda.time.DateTime;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.github.shanks.hbase.example.model.ExampleModel;
 import com.github.shanks.hbase.example.service.ExampleService;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:applicationContext-test.xml"})
-public class ExampleServiceTest {
+public class ExampleServiceTest extends BaseTest {
 
 	@Autowired
 	private ExampleService servicel;
@@ -31,8 +26,6 @@ public class ExampleServiceTest {
 		model.setNote("desc");
 		model.setNumber(100);
 		servicel.insert(model);
-		servicel.find(model.getUuid());
-		System.out.println(model.getUuid());
 	}
 	
 	@Test

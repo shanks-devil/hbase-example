@@ -1,14 +1,20 @@
 Problem
 ====================
-### Create Table
-	apache-phoenix-4.8.0-HBase-1.2-bin/bin/psql.py localhost:2184 example.sql 
-	apache-phoenix-4.8.0-HBase-1.2-bin/bin/psql.py localhost:2184 user_access.sql 
-
 ### If an Exception "org.apache.phoenix.exception.PhoenixIOException: SYSTEM.CATALOG" is encountered  when run test case in your PC
 	1 stop hbase Master and regionServers,and still keep ZK alive.
 	2 bin/hbase clean --cleanZk 
 	3 start Master and regionServers
-
+	
+### Create Table
+	[create table use phoenix]
+	apache-phoenix-4.8.0-HBase-1.2-bin/bin/psql.py localhost:2184 example.sql 
+	apache-phoenix-4.8.0-HBase-1.2-bin/bin/psql.py localhost:2184 user_access.sql
+	
+	[mapping a exist table]
+	execute command in hbase_shell.txt to create 'ARTICLE' table in hbase
+	apache-phoenix-4.8.0-HBase-1.2-bin/bin/psql.py localhost:2184 article.sql
+	
+	
 Hadoop(2.7.2) & Hbase()
 ====================
 
